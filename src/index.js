@@ -17,6 +17,20 @@ app.post('/produto', (request, response) => {
     return response.send("Produto Cadastrado com Sucesso!")
 })
 
+app.put('/editar', (request, response) => {
+    const { valor, nome, id } = request.body;
+    const usuarioIndice = produtos.findIndex((prod) => prod.id === id)
+    
+    console.log(usuarioIndice)
+    produtos[usuarioIndice] = {
+        id: id,
+        nome: nome,
+        valor: valor
+    }
+
+    return response.json({produtos})
+});
+
 app.listen(port, () => {
     console.log(`Rodando na porta: ${port}`)
 })
