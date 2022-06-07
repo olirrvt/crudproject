@@ -31,6 +31,13 @@ app.put('/editar', (request, response) => {
     return response.json({produtos})
 });
 
+app.delete('/apagar', (request, response) => {
+    const { nome } = request.body
+    const produtoIndice = produtos.findIndex((prod) => prod.nome === nome)
+    produtos.splice(produtoIndice,1)
+    return response.send("Produto deletado com sucesso!")
+})
+
 app.listen(port, () => {
     console.log(`Rodando na porta: ${port}`)
 })
