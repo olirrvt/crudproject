@@ -8,12 +8,14 @@ let produtos = [];
 let usuarios = [];
 
 app.get('/usuario', (request, response) => {
+    console.log("Requisição recebida!")
     return response.json({produtos})
 });
 
 app.post('/produto', (request, response) => {
     const produto = request.body;
     produtos.push(produto);
+    console.log("Produto recebido!")
     return response.send("Produto Cadastrado com Sucesso!")
 })
 
@@ -27,7 +29,7 @@ app.put('/editar', (request, response) => {
         nome: nome,
         valor: valor
     }
-
+    
     return response.json({produtos})
 });
 
